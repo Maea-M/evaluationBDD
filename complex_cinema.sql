@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS userRole
 (
     customers_id INT(11) NOT NULL,
     roles_id INT(11) NOT NULL,
-    PRIMARY KEY (customers_Id, roles_Id),
+    PRIMARY KEY (customers_id, roles_id),
     CONSTRAINT `fk_customers_id` FOREIGN KEY (`customers_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE,
     CONSTRAINT `fk_roles_id` FOREIGN KEY (`roles_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
@@ -42,9 +42,7 @@ CREATE TABLE IF NOT EXISTS complex
     number_room INT(20) NOT NULL,
     manager_id INT DEFAULT 1,
     CONSTRAINT `erreur_manager`
-    FOREIGN KEY (manager_id) REFERENCES customers(id)
-    ON DELETE SET NULL
-    ON UPDATE RESTRICT
+    FOREIGN KEY (manager_id) REFERENCES customers(id) ON DELETE SET NULL ON UPDATE RESTRICT
 ) ENGINE = InnoDB;
 
 /* Create table rooms */
@@ -55,4 +53,35 @@ CREATE TABLE IF NOT EXISTS rooms
     max_places INT(255) NOT NULL,
     complex_id INT DEFAULT 1,
     CONSTRAINT `erreur_complex` FOREIGN KEY (complex_id) REFERENCES complex(id) ON DELETE CASCADE
+) ENGINE = InnoDB;
+
+/* Create table movie*/
+CREATE TABLE IF NOT EXISTS movie
+(
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    title VARCHAR(50) NOT NULL,
+    director VARCHAR(60) NOT NULL,
+    time DATETIME NOT NULL
+) ENGINE = InnoDB;
+
+/* Create table session */
+CREATE TABLE IF NOT EXISTS sessions
+(
+    start_date DATETIME NOT NULL,
+    end_date DATETIME NOT NULL,
+    movie_id INT (11),
+    rooms_id INT (11),
+    PRIMARY KEY (movie_id, rooms_id),
+    CONSTRAINT `fk_movie_id` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `fk_rooms_id` FOREIGN KEY (`rooms_id`) REFERENCES `rooms` (`id`) ON DELETE CASCADE
+) ENGINE = InnoDB;
+
+/* Create table booking */
+CREATE TABLE IF NOT EXISTS booking
+(
+    session_id INT (11),
+    customers_id INT (11),
+    PRIMARY KEY (session_id, customers_id),
+    CONSTRAINT `fk_session_id` FOREIGN KEY (`session_id`) REFERENCES `session` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `fk_customers_id` FOREIGN KEY (`customers_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE    
 ) ENGINE = InnoDB;
