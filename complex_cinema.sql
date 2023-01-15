@@ -28,3 +28,21 @@ CREATE TABLE IF NOT EXISTS userRole
     CONSTRAINT `fk_customers_id` FOREIGN KEY (`customers_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE,
     CONSTRAINT `fk_roles_id` FOREIGN KEY (`roles_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
+
+/* Create table complex*/
+CREATE TABLE IF NOT EXISTS complex
+(
+    id INT (11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name_cinema VARCHAR(30) NOT NULL,
+    adress VARCHAR(60) NOT NUll,
+    postal_code INT(5) NOT NULL,
+    city VARCHAR(60) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone INT(10) NOT NULL,
+    number_room INT(20) NOT NULL,
+    manager_id INT DEFAULT 1,
+    CONSTRAINT `erreur_manager`
+    FOREIGN KEY (manager_id) REFERENCES customers(id)
+    ON DELETE SET NULL
+    ON UPDATE RESTRICT
+) ENGINE = InnoDB;
