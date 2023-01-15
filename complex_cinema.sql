@@ -46,3 +46,13 @@ CREATE TABLE IF NOT EXISTS complex
     ON DELETE SET NULL
     ON UPDATE RESTRICT
 ) ENGINE = InnoDB;
+
+/* Create table rooms */
+CREATE TABLE IF NOT EXISTS rooms
+(
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name_room VARCHAR(50) NOT NULL,
+    max_places INT(255) NOT NULL,
+    complex_id INT DEFAULT 1,
+    CONSTRAINT `erreur_complex` FOREIGN KEY (complex_id) REFERENCES complex(id) ON DELETE CASCADE
+) ENGINE = InnoDB;
