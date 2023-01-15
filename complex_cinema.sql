@@ -19,12 +19,12 @@ CREATE TABLE IF NOT EXISTS roles
     name_role VARCHAR (30) NOT NULL
 ) ENGINE = InnoDB;
 
-/*Create table user_role*/
-CREATE TABLE IF NOT EXISTS user_role
+/*Create table userRole*/
+CREATE TABLE IF NOT EXISTS userRole
 (
-    customersID CHAR(36) NOT NULL,
-    roleId INT(11) NOT NULL,
-    PRIMARY KEY (customersId, roleId),
-    FOREIGN KEY (customersId) REFERENCES customers(id),
-    FOREIGN KEY (roleId) REFERENCES roles(id)
+    customers_id INT(11) NOT NULL,
+    roles_id INT(11) NOT NULL,
+    PRIMARY KEY (customers_Id, roles_Id),
+    CONSTRAINT `fk_customers_id` FOREIGN KEY (`customers_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `fk_roles_id` FOREIGN KEY (`roles_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
