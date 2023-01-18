@@ -121,7 +121,7 @@ insert into rooms (id, name_room, max_places, complex_id) values (9, 'vert', 100
 
 /* date movie*/
 insert into movie (id, title, director, time) values (1, 'At War with the Army', 'Mable Sproule', '1:30');
-insert into movie (id, title, director, time) values (2, 'Godzilla and Mothra: The Battle for Earth (Gojira vs. Mosura)', 'Shirlee Ockland', '2:50');
+insert into movie (id, title, director, time) values (2, 'Godzilla and Mothra', 'Shirlee Ockland', '2:50');
 insert into movie (id, title, director, time) values (3, 'Never Let Me Go', 'Barbie Allman', '1:10');
 insert into movie (id, title, director, time) values (4, 'Mammy', 'Barbabra Zipsell', '1:18');
 insert into movie (id, title, director, time) values (5, 'Tsunami: Caught on Camera', 'Brunhilda Pocock', '1:25');
