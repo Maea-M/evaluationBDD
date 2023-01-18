@@ -141,3 +141,9 @@ insert into booking (sessions_id, customers_id) values (3, 8);
 insert into booking (sessions_id, customers_id) values (2, 2);
 insert into booking (sessions_id, customers_id) values (1, 4);
 
+/* ------------------ Restauration/sauvegarde -------------*/
+/* Save*/
+mysqldump -u root -p --databases complex_cinema > dump_complex_cinema_bdd.sql
+
+/*Restore*/
+mysql -u root -p complex_cinema < dump_complex_cinema_bdd.sql
