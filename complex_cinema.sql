@@ -84,16 +84,16 @@ CREATE TABLE IF NOT EXISTS booking
 /* ------------------ DATA -------------*/
 
 /* Data customers*/
-insert into customers (id, lastname, firstname, password, email, role) values (1, 'Aurelius', 'Cathie', 'zhIYFLB', 'caurelius0@instagram.com', 'admin');
-insert into customers (id, lastname, firstname, password, email, role) values (2, 'Papaminas', 'Klemens', 'qt9iJO3JMN', 'kpapaminas1@rambler.ru', 'admin');
-insert into customers (id, lastname, firstname, password, email, role) values (3, 'Elby', 'Lulita', 'zo7fg5XzhlOg', 'lelby2@dropbox.com', 'manager');
-insert into customers (id, lastname, firstname, password, email, role) values (4, 'Henniger', 'Clerkclaude', 'zio5opM8p4h5', 'chenniger3@artisteer.com', 'manager');
-insert into customers (id, lastname, firstname, password, email, role) values (5, 'Sprigging', 'Rickard', 'N221pdg4j', 'rsprigging4@deliciousdays.com', 'user');
-insert into customers (id, lastname, firstname, password, email, role) values (6, 'Waud', 'Torey', 'ljXM7lR1', 'twaud5@webeden.co.uk', 'user');
-insert into customers (id, lastname, firstname, password, email, role) values (7, 'Fullicks', 'Rebecka', 'HZEroG2jOQWH', 'rfullicks6@last.fm', 'user');
-insert into customers (id, lastname, firstname, password, email, role) values (8, 'Clayden', 'Myrah', 'ztZ3pc', 'mclayden7@blogger.com', 'user');
-insert into customers (id, lastname, firstname, password, email, role) values (9, 'Jills', 'Jordanna', 'mJAClOj7', 'jjills8@google.com.au', 'user');
-insert into customers (id, lastname, firstname, password, email, role) values (10, 'Lefort', 'Gypsy', 'priD8vaLYy', 'glefort9@over-blog.com', 'user');
+insert into customers (id, lastname, firstname, password, email, role) values (1, 'Aurelius', 'Cathie', '$2y$10$XqKUExRx3bz.jAmwW3/5juPRyuwUA0Iwj5QO.U1haEtQeZURfY.py', 'caurelius0@instagram.com', 'admin');
+insert into customers (id, lastname, firstname, password, email, role) values (2, 'Papaminas', 'Klemens', '$2y$10$gLHXEi1vM5.DSyIvAnHKme28HxSmQLSeTTiNVIsWQQrao/E.PPgvW', 'kpapaminas1@rambler.ru', 'admin');
+insert into customers (id, lastname, firstname, password, email, role) values (3, 'Elby', 'Lulita', '$2y$10$6cSqmn0Kph.lCNFAyETi1eZQhkaRrFFkF.BrDG7q/lrCHphNSgxdy', 'lelby2@dropbox.com', 'manager');
+insert into customers (id, lastname, firstname, password, email, role) values (4, 'Henniger', 'Clerkclaude', '$2y$10$duAFuTJbzEGEnopHarqH9O4/1C6EAlYtNvquAv4t2eVTXUAJwDG9.', 'chenniger3@artisteer.com', 'manager');
+insert into customers (id, lastname, firstname, password, email, role) values (5, 'Sprigging', 'Rickard', '$2y$10$OtAB4IKIOhUvD1FV020oNeR1IE1fORZblLH8WbOD5P87qZ/nWS4cO', 'rsprigging4@deliciousdays.com', 'user');
+insert into customers (id, lastname, firstname, password, email, role) values (6, 'Waud', 'Torey', '$2y$10$3kzuzLkRMySewTWUEAC4J.9erXp4dvKT8TRpAvK/JOBpRzZ7kxczq', 'twaud5@webeden.co.uk', 'user');
+insert into customers (id, lastname, firstname, password, email, role) values (7, 'Fullicks', 'Rebecka', '$2y$10$uC6y2H4Wpnkc3dQR/bqZT.F2Gh3cymjEn/zLbsQfZUODRxzyJiu5y', 'rfullicks6@last.fm', 'user');
+insert into customers (id, lastname, firstname, password, email, role) values (8, 'Clayden', 'Myrah', '$2y$10$IZHjfCEprElvr0FXR8V1ceZ0BwmRNDJXqyamo0ghE8GuO/LFE2okm', 'mclayden7@blogger.com', 'user');
+insert into customers (id, lastname, firstname, password, email, role) values (9, 'Jills', 'Jordanna', '$2y$10$2tTpZ7uUSVs0nVrahtwwsu7vKs/UmM3goUZzS5F9o/JauJ9KXqga6', 'jjills8@google.com.au', 'user');
+insert into customers (id, lastname, firstname, password, email, role) values (10, 'Lefort', 'Gypsy', '$2y$10$gtyY1tlde4mIe8ze89HPFuMAzK7DJkLTlrQfzZhspq4YovbcDQ6VK', 'glefort9@over-blog.com', 'user');
 
 GRANT ALL PRIVILEGES ON  complex_cinema.* TO 'admin'@'localhost';
 FLUSH PRIVILEGES
