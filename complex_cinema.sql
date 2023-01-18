@@ -102,11 +102,11 @@ GRANT ALL ON complex_cinema.customers TO 'admin'@'localhost';
 GRANT SELECT, INSERT ON complex_cinema.customers TO 'admin'@'localhost';
 
 /* Data complex*/
-insert into complex (id, name_cinema, adress, city, email, phone, number_room) values (1, 'Doyle Inc', '28 Troy Street', 'Woja', 'gtschirasche0@amazonaws.com', '4773918282', '1');
-insert into complex (id, name_cinema, adress, city, email, phone, number_room) values (2, 'Hilll, Abernathy and Senger', '1274 Butternut Place', 'Mengxi', 'tmilillo1@storify.com', '9215724988', '5');
-insert into complex (id, name_cinema, adress, city, email, phone, number_room) values (3, 'Rogahn LLC', '287 Hooker Court', 'Palotina', 'dblaes2@weather.com', '8249799149', '10');
-insert into complex (id, name_cinema, adress, city, email, phone, number_room) values (4, 'Mueller, Gutkowski and Hudson', '816 Swallow Hill', 'Magrath', 'mbum3@amazon.co.jp', '1078920606', '7');
-insert into complex (id, name_cinema, adress, city, email, phone, number_room) values (5, 'Batz, Pagac and Heidenreich', '27587 Carpenter Court', 'Erling', 'gabba4@narod.ru', '8392153790', '4');
+insert into complex (id, name_cinema, adress, postal_code, city, email, phone, number_room) values (1, 'Doyle Inc', '28 Troy Street', '29250' ,'Woja', 'gtschirasche0@amazonaws.com', '1234567890', '1');
+insert into complex (id, name_cinema, adress, postal_code, city, email, phone, number_room) values (2, 'Hilll, Abernathy and Senger', '1274 Butternut Place', '29600','Mengxi', 'tmilillo1@storify.com', '9876543210', '5');
+insert into complex (id, name_cinema, adress, postal_code, city, email, phone, number_room) values (3, 'Rogahn LLC', '287 Hooker Court', '29200','Palotina', 'dblaes2@weather.com', '1237894560', '10');
+insert into complex (id, name_cinema, adress, postal_code, city, email, phone, number_room) values (4, 'Mueller, Gutkowski and Hudson', '816 Swallow Hill', '29700', 'Magrath', 'mbum3@amazon.co.jp', '4567891302', '7');
+insert into complex (id, name_cinema, adress, postal_code, city, email, phone, number_room) values (5, 'Batz, Pagac and Heidenreich', '27587 Carpenter Court', '29800','Erling', 'gabba4@narod.ru', '0147852369', '4');
 
 /*Data rooms*/
 insert into rooms (id, name_room, max_places, complex_id) values (1, 'ecarlate', 200, 1);
