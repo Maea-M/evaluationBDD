@@ -1,6 +1,8 @@
 /*Create database*/
 CREATE DATABASE IF NOT EXISTS complex_cinema CHARACTER SET UTF8mb4 COLLATE utf8mb4_general_ci;
 
+USE complex_cinema
+
 /*Create table customers*/
 CREATE TABLE IF NOT EXISTS customers
 (
@@ -10,23 +12,6 @@ CREATE TABLE IF NOT EXISTS customers
     password VARCHAR(60) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     role VARCHAR (20) NOT NULL
-) ENGINE = InnoDB;
-
-/*Create table role*/
-CREATE TABLE IF NOT EXISTS roles
-(
-    id INT (11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    name_role VARCHAR (30) NOT NULL
-) ENGINE = InnoDB;
-
-/*Create table userRole*/
-CREATE TABLE IF NOT EXISTS userRole
-(
-    customers_id INT(11) NOT NULL,
-    roles_id INT(11) NOT NULL,
-    PRIMARY KEY (customers_id, roles_id),
-    CONSTRAINT `fk_customers_id` FOREIGN KEY (`customers_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE,
-    CONSTRAINT `fk_roles_id` FOREIGN KEY (`roles_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
 /* Create table complex*/
@@ -40,8 +25,8 @@ CREATE TABLE IF NOT EXISTS complex
     email VARCHAR(255) NOT NULL,
     phone INT(10) NOT NULL,
     number_room INT(20) NOT NULL,
-    manager_id INT DEFAULT 1,
-    CONSTRAINT `fk_erreur_manager_id` FOREIGN KEY (`manager_id`) REFERENCES `customers`(`id`) ON DELETE SET NULL ON UPDATE RESTRICT
+    admin_id INT DEFAULT 1,
+    CONSTRAINT `fk_erreur_admin_id` FOREIGN KEY (`admin_id`) REFERENCES `customers`(`id`) ON DELETE SET NULL ON UPDATE RESTRICT
 ) ENGINE = InnoDB;
 
 /* Create table rooms */
@@ -60,7 +45,7 @@ CREATE TABLE IF NOT EXISTS movie
     id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     title VARCHAR(50) NOT NULL,
     director VARCHAR(60) NOT NULL,
-    time DATETIME NOT NULL
+    time TIME
 ) ENGINE = InnoDB;
 
 /* Create table Price */
@@ -94,4 +79,64 @@ CREATE TABLE IF NOT EXISTS booking
     FOREIGN KEY (`sessions_id`) REFERENCES `sessions`(`id`) ON DELETE CASCADE,
     FOREIGN KEY (`customers_id`) REFERENCES `customers`(`id`) ON DELETE CASCADE,
     UNIQUE (sessions_id, customers_id) 
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB;
+
+/* ------------------ DATA -------------*/
+
+/* Data customers*/
+insert into customers (id, lastname, firstname, password, email, role) values (1, 'Aurelius', 'Cathie', 'zhIYFLB', 'caurelius0@instagram.com', 'admin');
+insert into customers (id, lastname, firstname, password, email, role) values (2, 'Papaminas', 'Klemens', 'qt9iJO3JMN', 'kpapaminas1@rambler.ru', 'admin');
+insert into customers (id, lastname, firstname, password, email, role) values (3, 'Elby', 'Lulita', 'zo7fg5XzhlOg', 'lelby2@dropbox.com', 'manager');
+insert into customers (id, lastname, firstname, password, email, role) values (4, 'Henniger', 'Clerkclaude', 'zio5opM8p4h5', 'chenniger3@artisteer.com', 'manager');
+insert into customers (id, lastname, firstname, password, email, role) values (5, 'Sprigging', 'Rickard', 'N221pdg4j', 'rsprigging4@deliciousdays.com', 'user');
+insert into customers (id, lastname, firstname, password, email, role) values (6, 'Waud', 'Torey', 'ljXM7lR1', 'twaud5@webeden.co.uk', 'user');
+insert into customers (id, lastname, firstname, password, email, role) values (7, 'Fullicks', 'Rebecka', 'HZEroG2jOQWH', 'rfullicks6@last.fm', 'user');
+insert into customers (id, lastname, firstname, password, email, role) values (8, 'Clayden', 'Myrah', 'ztZ3pc', 'mclayden7@blogger.com', 'user');
+insert into customers (id, lastname, firstname, password, email, role) values (9, 'Jills', 'Jordanna', 'mJAClOj7', 'jjills8@google.com.au', 'user');
+insert into customers (id, lastname, firstname, password, email, role) values (10, 'Lefort', 'Gypsy', 'priD8vaLYy', 'glefort9@over-blog.com', 'user');
+
+GRANT ALL PRIVILEGES ON  complex_cinema.* TO 'admin'@'localhost';
+FLUSH PRIVILEGES
+GRANT SELECT ON complex_cinema.* TO 'manager'@'localhost';
+FLUSH PRIVILEGES
+
+/* Data complex*/
+insert into complex (id, name_cinema, adress, city, email, phone, number_room) values (1, 'Doyle Inc', '28 Troy Street', 'Woja', 'gtschirasche0@amazonaws.com', '4773918282', '1');
+insert into complex (id, name_cinema, adress, city, email, phone, number_room) values (2, 'Hilll, Abernathy and Senger', '1274 Butternut Place', 'Mengxi', 'tmilillo1@storify.com', '9215724988', '5');
+insert into complex (id, name_cinema, adress, city, email, phone, number_room) values (3, 'Rogahn LLC', '287 Hooker Court', 'Palotina', 'dblaes2@weather.com', '8249799149', '10');
+insert into complex (id, name_cinema, adress, city, email, phone, number_room) values (4, 'Mueller, Gutkowski and Hudson', '816 Swallow Hill', 'Magrath', 'mbum3@amazon.co.jp', '1078920606', '7');
+insert into complex (id, name_cinema, adress, city, email, phone, number_room) values (5, 'Batz, Pagac and Heidenreich', '27587 Carpenter Court', 'Erling', 'gabba4@narod.ru', '8392153790', '4');
+
+/*Data rooms*/
+insert into rooms (id, name_room, max_places, complex_id) values (1, 'ecarlate', 200, 1);
+insert into rooms (id, name_room, max_places, complex_id) values (2, 'corail', 100, 2);
+insert into rooms (id, name_room, max_places, complex_id) values (3, 'jade', 100, 2);
+insert into rooms (id, name_room, max_places, complex_id) values (4, 'agate', 100, 2);
+insert into rooms (id, name_room, max_places, complex_id) values (5, 'ambre', 150, 2);
+insert into rooms (id, name_room, max_places, complex_id) values (6, 'rubis', 100, 2);
+insert into rooms (id, name_room, max_places, complex_id) values (7, 'jaune', 100, 3);
+insert into rooms (id, name_room, max_places, complex_id) values (8, 'bleu', 200, 4);
+insert into rooms (id, name_room, max_places, complex_id) values (9, 'vert', 100, 2);
+
+/* date movie*/
+insert into movie (id, title, director, time) values (1, 'At War with the Army', 'Mable Sproule', '1:30');
+insert into movie (id, title, director, time) values (2, 'Godzilla and Mothra: The Battle for Earth (Gojira vs. Mosura)', 'Shirlee Ockland', '2:50');
+insert into movie (id, title, director, time) values (3, 'Never Let Me Go', 'Barbie Allman', '1:10');
+insert into movie (id, title, director, time) values (4, 'Mammy', 'Barbabra Zipsell', '1:18');
+insert into movie (id, title, director, time) values (5, 'Tsunami: Caught on Camera', 'Brunhilda Pocock', '1:25');
+
+/*date price*/
+insert into price (id, type, amount) values (1, 'plein tarif', 9.20);
+insert into price (id, type, amount) values (2, 'étudiant', 7.60);
+insert into price (id, type, amount) values (3, 'moins de 14 ans', 5.90);
+
+/* Date sessions*/
+insert into sessions (id, start_date, end_date, movie_id, rooms_id, price_id) values (1, '2023-01-18 12:00:00', '2023-01-18 13:30:00', 1, 1, 1);
+insert into sessions (id, start_date, end_date, movie_id, rooms_id, price_id) values (2, '2023-01-18 12:00:00', '2023-01-18 14:50:00', 2, 2, 1);
+insert into sessions (id, start_date, end_date, movie_id, rooms_id, price_id) values (3, '2023-01-18 12:00:00', '2023-01-18 13:10:00', 3, 3, 3);
+
+/*Data booking*/
+insert into booking (sessions_id, customers_id) values (3, 8);
+insert into booking (sessions_id, customers_id) values (2, 2);
+insert into booking (sessions_id, customers_id) values (1, 4);
+
