@@ -95,10 +95,11 @@ insert into customers (id, lastname, firstname, password, email, role) values (8
 insert into customers (id, lastname, firstname, password, email, role) values (9, 'Jills', 'Jordanna', '$2y$10$2tTpZ7uUSVs0nVrahtwwsu7vKs/UmM3goUZzS5F9o/JauJ9KXqga6', 'jjills8@google.com.au', 'user');
 insert into customers (id, lastname, firstname, password, email, role) values (10, 'Lefort', 'Gypsy', '$2y$10$gtyY1tlde4mIe8ze89HPFuMAzK7DJkLTlrQfzZhspq4YovbcDQ6VK', 'glefort9@over-blog.com', 'user');
 
-GRANT ALL PRIVILEGES ON  complex_cinema.* TO 'admin'@'localhost';
-FLUSH PRIVILEGES
-GRANT SELECT ON complex_cinema.* TO 'manager'@'localhost';
-FLUSH PRIVILEGES
+/*GRANT ALL ON mydb.mytbl TO 'someuser'@'somehost';
+GRANT SELECT, INSERT ON mydb.mytbl TO 'someuser'@'somehost'
+*/
+GRANT ALL ON complex_cinema.customers TO 'admin'@'localhost';
+GRANT SELECT, INSERT ON complex_cinema.customers TO 'admin'@'localhost';
 
 /* Data complex*/
 insert into complex (id, name_cinema, adress, city, email, phone, number_room) values (1, 'Doyle Inc', '28 Troy Street', 'Woja', 'gtschirasche0@amazonaws.com', '4773918282', '1');
